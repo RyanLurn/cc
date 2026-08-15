@@ -12,5 +12,9 @@
       ["value-parent", "value-sibling", "value-index"],
       "unknown"
     ]
+  },
+  "sortTailwindcss": {
+    "stylesheet": "./apps/web/src/styles/index.css",
+    "functions": ["tw", "clsx", "cn", "twMerge", "cva"]
   }
 }
