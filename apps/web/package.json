@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ui:add": "pnpm exec shadcn add"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",
