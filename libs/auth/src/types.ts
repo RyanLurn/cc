@@ -1,9 +1,9 @@
-import type { betterAuth } from "better-auth/minimal";
+import type { Auth } from "better-auth";
 
 import type { createAuthServerOptions } from "@/create-server-options";
 
 export type AuthServerOptions = ReturnType<typeof createAuthServerOptions>;
-export type AuthServer = ReturnType<typeof betterAuth<AuthServerOptions>>;
+export type AuthServer = Auth<AuthServerOptions>;
 
 export type AuthSession = AuthServer["$Infer"]["Session"]["session"];
 export type AuthUser = AuthServer["$Infer"]["Session"]["user"];
