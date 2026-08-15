@@ -30,6 +30,7 @@ packageExtensions:
 catalog:
   "@neondatabase/serverless": 1.1.0
   "@types/node": 26.2.0
+  better-auth: 1.7.0-rc.5
   drizzle-orm: 1.0.0-rc.4
   tsdown: 0.22.14
   typescript: 7.0.2
