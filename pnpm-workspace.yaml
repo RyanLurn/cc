@@ -29,9 +29,7 @@ packageExtensions:
 # Catalog
 catalog:
   "@neondatabase/serverless": 1.1.0
-  "@rolldown/plugin-babel": 0.2.3
   "@types/node": 26.2.0
-  "@vitejs/plugin-react": 6.0.5
   drizzle-orm: 1.0.0-rc.4
   tsdown: 0.22.14
   typescript: 7.0.2

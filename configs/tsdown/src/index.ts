@@ -1,9 +1,5 @@
 import type { UserConfig } from "tsdown";
 
-import babel from "@rolldown/plugin-babel";
-import { reactCompilerPreset } from "@vitejs/plugin-react";
-import { defineConfig } from "tsdown";
-
 export type LibConfigOptions = Pick<UserConfig, "platform" | "exports">;
 
 export function createLibConfig({
@@ -23,19 +19,4 @@ export function createLibConfig({
     platform,
     exports,
   };
-}
-
-export function createReactLibConfig({
-  platform = "neutral",
-  exports = true,
-}: LibConfigOptions) {
-  const libConfig = createLibConfig({ platform, exports });
-  return defineConfig({
-    ...libConfig,
-    plugins: [
-      babel({
-        presets: [reactCompilerPreset()],
-      }),
-    ],
-  });
 }

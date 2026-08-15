@@ -10,8 +10,6 @@
     "build": "tsdown"
   },
   "dependencies": {
-    "@rolldown/plugin-babel": "catalog:",
-    "@vitejs/plugin-react": "catalog:",
     "tsdown": "catalog:"
   },
   "devDependencies": {
