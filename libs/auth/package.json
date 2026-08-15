@@ -14,6 +14,7 @@
     "@repo/env": "workspace:*",
     "@repo/error": "workspace:*",
     "@repo/result": "workspace:*",
+    "@repo/types": "workspace:*",
     "better-auth": "catalog:",
     "zod": "catalog:"
   },
