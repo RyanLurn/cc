@@ -11,7 +11,7 @@ import type { AuthBasePath, AuthBaseUrl, AuthSecret } from "@/env";
 
 import { MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "@/constants";
 
-export interface AuthServerParams {
+export interface CreateAuthServerParams {
   db: Db;
   baseURL: AuthBaseUrl;
   basePath: AuthBasePath;
@@ -23,7 +23,7 @@ export function createAuthServerOptions({
   baseURL,
   basePath,
   secret,
-}: AuthServerParams) {
+}: CreateAuthServerParams) {
   return {
     baseURL,
     basePath,

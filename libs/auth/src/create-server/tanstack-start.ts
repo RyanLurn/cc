@@ -1,16 +1,16 @@
 import { betterAuth } from "better-auth/minimal";
 import { tanstackStartCookies } from "better-auth/tanstack-start";
 
-import type { AuthServerParams } from "@/create/server-options";
+import type { CreateAuthServerParams } from "@/create-server/options";
 
-import { createAuthServerOptions } from "@/create/server-options";
+import { createAuthServerOptions } from "@/create-server/options";
 
 export function createTanstackStartAuthServer({
   db,
   baseURL,
   basePath,
   secret,
-}: AuthServerParams) {
+}: CreateAuthServerParams) {
   return betterAuth({
     ...createAuthServerOptions({
       db,
