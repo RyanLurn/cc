@@ -4,9 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "tsdown",
-    "check": "drizzle-kit check --config=migration.config.ts",
-    "generate": "drizzle-kit generate --config=migration.config.ts",
-    "migrate": "drizzle-kit migrate --config=migration.config.ts"
+    "test": "vitest run"
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "1.7.0-rc.5",
@@ -21,8 +19,10 @@
   "devDependencies": {
     "@repo/tsdown-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@repo/vitest-config": "workspace:*",
     "@types/node": "catalog:",
     "tsdown": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   }
 }
