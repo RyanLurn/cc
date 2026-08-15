@@ -1,0 +1,45 @@
+# Monorepo packages
+packages:
+  - apps/*
+  - configs/*
+  - libs/*
+
+# Dependency settings
+savePrefix: ""
+enableGlobalVirtualStore: true
+allowBuilds:
+  esbuild: true
+packageExtensions:
+  "drizzle-kit":
+    peerDependencies:
+      "@neondatabase/serverless": "*"
+      "drizzle-orm": "*"
+    peerDependenciesMeta:
+      "@neondatabase/serverless":
+        optional: true
+      "drizzle-orm":
+        optional: true
+  "@tanstack/react-form":
+    peerDependencies:
+      "@types/react": "*"
+    peerDependenciesMeta:
+      "@types/react":
+        optional: true
+
+# Catalog
+catalog:
+  "@neondatabase/serverless": 1.1.0
+  "@rolldown/plugin-babel": 0.2.3
+  "@types/node": 26.2.0
+  "@vitejs/plugin-react": 6.0.5
+  drizzle-orm: 1.0.0-rc.4
+  tsdown: 0.22.14
+  typescript: 7.0.2
+  zod: 4.4.3
+
+# Supply chain attack mitigation
+minimumReleaseAge: 1440
+minimumReleaseAgeStrict: true
+blockExoticSubdeps: true
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 1440

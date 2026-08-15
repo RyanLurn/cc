@@ -1,0 +1,30 @@
+{
+  "name": "cc",
+  "type": "module",
+  "scripts": {
+    "build:all": "turbo run build",
+    "build:configs": "turbo run build --filter=./configs/*",
+    "build:libs": "turbo run build --filter=./libs/*",
+    "build": "turbo run build --filter=./configs/* --filter=./libs/*",
+    "fmt": "oxfmt --disable-nested-config",
+    "fmt:check": "oxfmt --check --disable-nested-config",
+    "lint": "pnpm run build && oxlint --disable-nested-config",
+    "lint:fix": "pnpm run build && oxlint --fix --disable-nested-config",
+    "check": "pnpm run lint && pnpm run fmt:check",
+    "fix": "pnpm run lint:fix && pnpm run fmt",
+    "ui:add": "pnpm --filter @repo/ui run shadcn:add"
+  },
+  "devDependencies": {
+    "oxfmt": "0.63.0",
+    "oxlint": "1.78.0",
+    "oxlint-tsgolint": "7.0.2001",
+    "turbo": "2.10.9"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.21.0",
+      "onFail": "warn"
+    }
+  }
+}

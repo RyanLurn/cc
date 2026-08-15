@@ -1,0 +1,22 @@
+{
+  "name": "@repo/tsdown-config",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "@rolldown/plugin-babel": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "tsdown": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
+  }
+}

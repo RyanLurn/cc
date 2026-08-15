@@ -1,0 +1,23 @@
+{
+  "name": "@repo/env",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./error": "./dist/error.js",
+    "./schemas/node": "./dist/schemas/node.js",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "@repo/error": "workspace:*",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/tsdown-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "tsdown": "catalog:",
+    "typescript": "catalog:"
+  }
+}
