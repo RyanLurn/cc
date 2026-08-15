@@ -1,6 +1,6 @@
-import { defineConfig } from "vitest/config";
+import type { ViteUserConfig } from "vitest/config";
 
-export const testConfig = defineConfig({
+export const testConfig = {
   resolve: {
     tsconfigPaths: true,
   },
@@ -9,4 +9,4 @@ export const testConfig = defineConfig({
       enabled: true,
     },
   },
-});
+} satisfies ViteUserConfig;
