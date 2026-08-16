@@ -13,3 +13,13 @@ export type AuthBasePath = z.infer<typeof AuthBasePathSchema>;
 
 export const AuthSecretSchema = z.string().min(32).brand<"AuthSecret">();
 export type AuthSecret = z.infer<typeof AuthSecretSchema>;
+
+export const AuthSecretEnvSchema = z.object({
+  AUTH_SECRET: AuthSecretSchema,
+});
+
+export const AuthEnvSchema = z.object({
+  ...AuthSecretEnvSchema.shape,
+  AUTH_BASE_URL: AuthBaseUrlSchema,
+  AUTH_BASE_PATH: AuthBasePathSchema,
+});
