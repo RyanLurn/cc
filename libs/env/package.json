@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "exports": {
+    "./constants": "./dist/constants.js",
     "./error": "./dist/error.js",
     "./schemas/node": "./dist/schemas/node.js",
     "./package.json": "./package.json"
