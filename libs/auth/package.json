@@ -2,6 +2,17 @@
   "name": "@repo/db",
   "private": true,
   "type": "module",
+  "exports": {
+    "./constants": "./dist/constants.mjs",
+    "./create-server": "./dist/create-server/index.mjs",
+    "./create-server/options": "./dist/create-server/options.mjs",
+    "./create-server/tanstack-start": "./dist/create-server/tanstack-start.mjs",
+    "./env": "./dist/env.mjs",
+    "./errors": "./dist/errors.mjs",
+    "./ops/get-user": "./dist/ops/get-user.mjs",
+    "./types": "./dist/types.mjs",
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "build": "tsdown",
     "test": "vitest run"
@@ -14,6 +25,7 @@
     "@repo/result": "workspace:*",
     "@repo/types": "workspace:*",
     "better-auth": "catalog:",
+    "better-call": "1.4.0",
     "zod": "catalog:"
   },
   "devDependencies": {
