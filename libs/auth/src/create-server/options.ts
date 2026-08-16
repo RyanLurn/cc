@@ -16,7 +16,7 @@ import { MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "@/constants";
 export interface CreateAuthServerParams {
   db: Db;
   baseURL: AuthBaseUrl;
-  basePath?: AuthBasePath;
+  basePath: AuthBasePath;
   secret: AuthSecret;
 }
 
