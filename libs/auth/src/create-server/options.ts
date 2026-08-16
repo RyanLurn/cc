@@ -7,7 +7,9 @@ import { sessionTable } from "@repo/db/schema/tables/session";
 import { userTable } from "@repo/db/schema/tables/user";
 import { verificationTable } from "@repo/db/schema/tables/verification";
 
-import type { AuthBasePath, AuthBaseUrl, AuthSecret } from "@/env";
+import type { AuthBasePath } from "@/schemas/base-path";
+import type { AuthBaseUrl } from "@/schemas/base-url";
+import type { AuthSecret } from "@/schemas/secret";
 
 import { MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "@/constants";
 
