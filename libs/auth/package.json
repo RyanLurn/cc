@@ -13,6 +13,7 @@
     "./schemas/base-url": "./dist/schemas/base-url.mjs",
     "./schemas/env": "./dist/schemas/env/index.mjs",
     "./schemas/env/secret": "./dist/schemas/env/secret.mjs",
+    "./schemas/env/vite": "./dist/schemas/env/vite.mjs",
     "./schemas/secret": "./dist/schemas/secret.mjs",
     "./types": "./dist/types.mjs",
     "./package.json": "./package.json"
