@@ -12,6 +12,7 @@
     "@base-ui/react": "1.7.0",
     "@fontsource-variable/geist": "5.3.0",
     "@fontsource-variable/geist-mono": "5.3.0",
+    "@repo/auth": "workspace:*",
     "@repo/db": "workspace:*",
     "@repo/env": "workspace:*",
     "@repo/error": "workspace:*",
