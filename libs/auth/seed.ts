@@ -1,8 +1,9 @@
 import { createDb } from "@repo/db/create";
 import { DbEnvSchema } from "@repo/db/env";
+import { betterAuth } from "better-auth/minimal";
 import { z } from "zod";
 
-import { createAuthServer } from "@/create-server";
+import { createAuthServerOptions } from "@/create-server/options";
 import { EmailSchema } from "@/schemas/email";
 import { AuthEnvSchema } from "@/schemas/env";
 import { PasswordSchema } from "@/schemas/password";
@@ -21,10 +22,17 @@ const SeedEnvSchema = z.object({
 });
 const env = SeedEnvSchema.parse(process.env);
 
-const auth = createAuthServer({
+const authOptions = createAuthServerOptions({
   db: createDb(env.NEON_POOLED_CONNECTION_STRING),
   baseURL: env.AUTH_BASE_URL,
   secret: env.AUTH_SECRET,
+});
+const auth = betterAuth({
+  ...authOptions,
+  emailAndPassword: {
+    ...authOptions.emailAndPassword,
+    disableSignUp: false,
+  },
 });
 
 const data = await auth.api.signUpEmail({
