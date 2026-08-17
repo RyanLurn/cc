@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from "./routes/__root";
 import { Route as IndexRouteImport } from "./routes/index";
 import { Route as AuthenticatedRouteRouteImport } from "./routes/_authenticated/route";
+import { Route as R500IndexRouteImport } from "./routes/500/index";
 import { Route as AuthenticatedAccountIndexRouteImport } from "./routes/_authenticated/account/index";
 
 const IndexRoute = IndexRouteImport.update({
@@ -22,6 +23,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: "/_authenticated",
   getParentRoute: () => rootRouteImport,
 } as any);
+const R500IndexRoute = R500IndexRouteImport.update({
+  id: "/500/",
+  path: "/500/",
+  getParentRoute: () => rootRouteImport,
+} as any);
 const AuthenticatedAccountIndexRoute =
   AuthenticatedAccountIndexRouteImport.update({
     id: "/account/",
@@ -31,29 +37,34 @@ const AuthenticatedAccountIndexRoute =
 
 export interface FileRoutesByFullPath {
   "/": typeof IndexRoute;
+  "/500/": typeof R500IndexRoute;
   "/account/": typeof AuthenticatedAccountIndexRoute;
 }
 export interface FileRoutesByTo {
   "/": typeof IndexRoute;
+  "/500": typeof R500IndexRoute;
   "/account": typeof AuthenticatedAccountIndexRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
   "/": typeof IndexRoute;
   "/_authenticated": typeof AuthenticatedRouteRouteWithChildren;
+  "/500/": typeof R500IndexRoute;
   "/_authenticated/account/": typeof AuthenticatedAccountIndexRoute;
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "/" | "/account/";
+  fullPaths: "/" | "/500/" | "/account/";
   fileRoutesByTo: FileRoutesByTo;
-  to: "/" | "/account";
-  id: "__root__" | "/" | "/_authenticated" | "/_authenticated/account/";
+  to: "/" | "/500" | "/account";
+  id:
+    "__root__" | "/" | "/_authenticated" | "/500/" | "/_authenticated/account/";
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute;
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren;
+  R500IndexRoute: typeof R500IndexRoute;
 }
 
 declare module "@tanstack/react-router" {
@@ -70,6 +81,13 @@ declare module "@tanstack/react-router" {
       path: "";
       fullPath: "/";
       preLoaderRoute: typeof AuthenticatedRouteRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/500/": {
+      id: "/500/";
+      path: "/500";
+      fullPath: "/500/";
+      preLoaderRoute: typeof R500IndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     "/_authenticated/account/": {
@@ -96,6 +114,7 @@ const AuthenticatedRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  R500IndexRoute: R500IndexRoute,
 };
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
