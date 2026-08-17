@@ -22,7 +22,8 @@
   },
   "scripts": {
     "build": "tsdown",
-    "test": "vitest run"
+    "test": "vitest run",
+    "seed": "tsx --env-file=.env seed.ts"
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "1.7.0-rc.5",
@@ -41,6 +42,7 @@
     "@repo/vitest-config": "workspace:*",
     "@types/node": "catalog:",
     "tsdown": "catalog:",
+    "tsx": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
   },
