@@ -47,38 +47,48 @@ function SignInPage() {
       onSubmit: SignInSchema,
     },
     onSubmit: async ({ value, formApi }) => {
-      // The signInValidator transforms email.
-      // However, TanStack Form doesn't use the output of validators for the value.
-      // So, we need to parse it again here to get the transformed email.
-      const parsedValue = SignInSchema.parse(value);
+      try {
+        // The signInValidator transforms email.
+        // However, TanStack Form doesn't use the output of validators for the value.
+        // So, we need to parse it again here to get the transformed email.
+        const parsedValue = SignInSchema.parse(value);
 
-      const { data, error } = await authClient.signIn.email({
-        ...parsedValue,
-        callbackURL: redirect ?? AccountRoute.to,
-      });
-
-      if (data) {
-        toast.add({
-          type: "success",
-          description: `Welcome back, ${data.user.name}!`,
+        const { data, error } = await authClient.signIn.email({
+          ...parsedValue,
+          callbackURL: redirect ?? AccountRoute.to,
         });
-        return;
-      }
 
-      if (error.code === "INVALID_EMAIL") {
-        formApi.setFieldMeta("email", (prev) => ({
-          ...prev,
-          errorMap: {
-            onServer: [{ message: error.message ?? "Invalid email." }],
-          },
-        }));
-        return;
-      }
+        if (data) {
+          toast.add({
+            type: "success",
+            description: `Welcome back, ${data.user.name}!`,
+          });
+          return;
+        }
 
-      toast.add({
-        type: "error",
-        description: error.message ?? INTERNAL_SERVER_ERROR_MESSAGE,
-      });
+        if (error.code === "INVALID_EMAIL") {
+          formApi.setFieldMeta("email", (prev) => ({
+            ...prev,
+            errorMap: {
+              onServer: [{ message: error.message ?? "Invalid email." }],
+            },
+          }));
+          return;
+        }
+
+        toast.add({
+          type: "error",
+          description: error.message ?? INTERNAL_SERVER_ERROR_MESSAGE,
+        });
+      } catch (error) {
+        toast.add({
+          type: "error",
+          description:
+            error instanceof Error
+              ? error.message
+              : INTERNAL_SERVER_ERROR_MESSAGE,
+        });
+      }
     },
   });
 
