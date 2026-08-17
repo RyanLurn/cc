@@ -1,5 +1,8 @@
+/// <reference types="vitest/config" />
+
 import { AuthViteEnvSchema } from "@repo/auth/schemas/env/vite";
 import { VITE_ENV_KEY_PREFIX } from "@repo/env/constants";
+import { testConfig } from "@repo/vitest-config";
 import babel from "@rolldown/plugin-babel";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
@@ -37,5 +40,6 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 5173,
     },
+    test: testConfig.test,
   };
 });
