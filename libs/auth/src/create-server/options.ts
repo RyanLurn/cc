@@ -50,6 +50,7 @@ export function createAuthServerOptions({
     },
     emailAndPassword: {
       enabled: true,
+      disableSignUp: true,
       minPasswordLength: MIN_PASSWORD_LENGTH,
       maxPasswordLength: MAX_PASSWORD_LENGTH,
     },
