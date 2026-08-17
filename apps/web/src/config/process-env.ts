@@ -6,6 +6,8 @@ import { InvalidEnvError } from "@repo/env/error";
 import { err, ok } from "@repo/result/utils";
 import { z } from "zod";
 
+import { INTERNAL_SERVER_ERROR_MESSAGE } from "@/error/constants";
+
 export const ProcessEnvSchema = z.object({
   ...DbEnvSchema.shape,
   ...AuthSecretEnvSchema.shape,
@@ -18,8 +20,7 @@ export function getProcessEnv(): Result<ProcessEnv, InvalidEnvError> {
   if (!parseEnvResult.success) {
     return err(
       new InvalidEnvError({
-        message:
-          "Something went wrong. Please try again later or contact support.",
+        message: INTERNAL_SERVER_ERROR_MESSAGE,
         cause: parseEnvResult.error,
       }),
     );
