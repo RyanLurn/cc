@@ -1,5 +1,5 @@
 import type { Db } from "@repo/db";
-import type { BetterAuthOptions } from "better-auth/minimal";
+import type { BetterAuthOptions } from "better-auth";
 
 import { drizzleAdapter } from "@better-auth/drizzle-adapter/relations-v2";
 import { accountTable } from "@repo/db/schema/tables/account";

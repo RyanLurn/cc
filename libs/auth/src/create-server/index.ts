@@ -1,4 +1,4 @@
-import { betterAuth } from "better-auth/minimal";
+import { betterAuth } from "better-auth";
 
 import type { CreateAuthServerParams } from "@/create-server/options";
 
