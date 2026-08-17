@@ -7,7 +7,7 @@ import { err, ok } from "@repo/result/utils";
 import { createServerOnlyFn } from "@tanstack/react-start";
 import { z } from "zod";
 
-import { INTERNAL_SERVER_ERROR_MESSAGE } from "@/error/constants";
+import { DEFAULT_ERROR_MESSAGE } from "@/error/constants";
 
 export const ProcessEnvSchema = z.object({
   ...DbEnvSchema.shape,
@@ -22,7 +22,7 @@ export const getProcessEnv = createServerOnlyFn(
     if (!parseEnvResult.success) {
       return err(
         new InvalidEnvError({
-          message: INTERNAL_SERVER_ERROR_MESSAGE,
+          message: DEFAULT_ERROR_MESSAGE,
           cause: parseEnvResult.error,
         }),
       );

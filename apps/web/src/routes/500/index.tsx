@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { buttonVariants } from "@/components/ui/button";
-import { INTERNAL_SERVER_ERROR_MESSAGE } from "@/error/constants";
+import { DEFAULT_ERROR_MESSAGE } from "@/error/constants";
 import { RedirectSearchParamSchema } from "@/lib/schemas";
 
 export const Route = createFileRoute("/500/")({
@@ -16,7 +16,7 @@ function InternalServerErrorPage() {
   return (
     <div className="typeset flex h-full flex-col items-center justify-center gap-y-3">
       <h1 className="text-destructive">500 - Internal server error</h1>
-      <p>{INTERNAL_SERVER_ERROR_MESSAGE}</p>
+      <p>{DEFAULT_ERROR_MESSAGE}</p>
       {redirect ? (
         <Link className={linkClassName} to={redirect}>
           Retry

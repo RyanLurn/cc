@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/card";
 import { FieldGroup } from "@/components/ui/field";
 import { toast } from "@/components/ui/toast";
-import { INTERNAL_SERVER_ERROR_MESSAGE } from "@/error/constants";
+import { DEFAULT_ERROR_MESSAGE } from "@/error/constants";
 import { authClient } from "@/features/auth/client";
 import { useAppForm } from "@/lib/form/hooks";
 import { RedirectSearchParamSchema } from "@/lib/schemas";
@@ -78,15 +78,13 @@ function SignInPage() {
 
         toast.add({
           type: "error",
-          description: error.message ?? INTERNAL_SERVER_ERROR_MESSAGE,
+          description: error.message ?? DEFAULT_ERROR_MESSAGE,
         });
       } catch (error) {
         toast.add({
           type: "error",
           description:
-            error instanceof Error
-              ? error.message
-              : INTERNAL_SERVER_ERROR_MESSAGE,
+            error instanceof Error ? error.message : DEFAULT_ERROR_MESSAGE,
         });
       }
     },
