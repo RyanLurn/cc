@@ -278,6 +278,9 @@ importers:
       '@repo/result':
         specifier: workspace:*
         version: link:../../libs/result
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../../libs/types
       '@tanstack/react-form':
         specifier: 1.33.5
         version: 1.33.5(@tanstack/react-start@1.168.44(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.4)(vite@8.2.1(@types/node@26.2.0)(jiti@2.7.0)))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
