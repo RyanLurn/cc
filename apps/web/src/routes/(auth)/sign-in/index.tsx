@@ -1,4 +1,7 @@
-import { MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "@repo/auth/constants";
+import { MIN_PASSWORD_LENGTH } from "@repo/auth/constants";
+import { EmailSchema } from "@repo/auth/schemas/email";
+import { PasswordSchema } from "@repo/auth/schemas/password";
+import { RememberMeSchema } from "@repo/auth/schemas/remember-me";
 import { useSelector } from "@tanstack/react-form";
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
@@ -24,17 +27,6 @@ export const Route = createFileRoute("/(auth)/sign-in/")({
   component: SignInPage,
 });
 
-const EmailSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .normalize("NFC")
-  .pipe(z.email("Invalid email.").max(254, "Email is too long."));
-const PasswordSchema = z
-  .string()
-  .min(MIN_PASSWORD_LENGTH, "Password is too short.")
-  .max(MAX_PASSWORD_LENGTH, "Password is too long.");
-const RememberMeSchema = z.boolean();
 const SignInSchema = z.object({
   email: EmailSchema,
   password: PasswordSchema,
