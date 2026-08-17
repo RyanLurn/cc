@@ -40,5 +40,8 @@
     "tsdown": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "drizzle-orm": "catalog:"
   }
 }
