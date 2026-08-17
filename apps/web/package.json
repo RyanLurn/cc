@@ -17,6 +17,7 @@
     "@repo/db": "workspace:*",
     "@repo/env": "workspace:*",
     "@repo/error": "workspace:*",
+    "@repo/http": "workspace:*",
     "@repo/result": "workspace:*",
     "@tanstack/react-router": "1.170.27",
     "@tanstack/react-start": "1.168.44",
