@@ -4,6 +4,7 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.mjs",
+    "./create": "./dist/create.mjs",
     "./env": "./dist/env.mjs",
     "./schema/helpers/id": "./dist/schema/helpers/id.mjs",
     "./schema/helpers/timestamps": "./dist/schema/helpers/timestamps.mjs",
