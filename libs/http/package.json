@@ -2,6 +2,15 @@
   "name": "@repo/http",
   "private": true,
   "type": "module",
+  "exports": {
+    "./request-methods": "./dist/request-methods.js",
+    "./response-statuses": "./dist/response-statuses/index.js",
+    "./response-statuses/error": "./dist/response-statuses/error/index.js",
+    "./response-statuses/error/client": "./dist/response-statuses/error/client.js",
+    "./response-statuses/error/server": "./dist/response-statuses/error/server.js",
+    "./response-statuses/success": "./dist/response-statuses/success.js",
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "build": "tsdown"
   },
