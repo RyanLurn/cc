@@ -49,3 +49,6 @@ try.ts
 
 # Agent's scripts
 .*-scripts
+
+# Wrangler
+.wrangler
