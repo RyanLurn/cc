@@ -1,5 +1,6 @@
 /// <reference types="vitest/config" />
 
+import { cloudflare } from "@cloudflare/vite-plugin";
 import { AuthViteEnvSchema } from "@repo/auth/schemas/env/vite";
 import { VITE_ENV_KEY_PREFIX } from "@repo/env/constants";
 import { testConfig } from "@repo/vitest-config";
@@ -23,6 +24,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
+      cloudflare({ viteEnvironment: { name: "ssr" } }),
       // Make sure that '@tanstack/react-start/plugin/vite' is passed before '@vitejs/plugin-react'
       tanstackStart({
         router: {

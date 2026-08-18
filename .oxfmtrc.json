@@ -1,6 +1,12 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "ignorePatterns": ["routeTree.gen.ts", "drizzle", "migrations", ".maps"],
+  "ignorePatterns": [
+    "drizzle",
+    "migrations",
+    ".maps",
+    "routeTree.gen.ts",
+    "worker-configuration.d.ts"
+  ],
   "printWidth": 80,
   "sortImports": {
     "groups": [
