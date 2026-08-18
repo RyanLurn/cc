@@ -37,6 +37,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "1.52.1",
     "@repo/typescript-config": "workspace:*",
     "@repo/vitest-config": "workspace:*",
     "@rolldown/plugin-babel": "0.2.3",
@@ -48,6 +49,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "typescript": "catalog:",
     "vite": "8.2.1",
-    "vitest": "catalog:"
+    "vitest": "catalog:",
+    "wrangler": "catalog:"
   }
 }
