@@ -1,7 +1,7 @@
 {
   "extends": "@repo/typescript-config/src/jsx.json",
   "compilerOptions": {
-    "types": ["react", "vite/client", "vitest"],
+    "types": ["node", "react", "vite/client", "vitest"],
     "paths": {
       "@/*": ["./src/*"]
     }

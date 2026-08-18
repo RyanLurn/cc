@@ -1,6 +1,10 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "ignorePatterns": ["routeTree.gen.ts", "worker-configuration.d.ts"],
+  "ignorePatterns": [
+    "routeTree.gen.ts",
+    "worker-configuration.d.ts",
+    "worker-runtime.d.ts"
+  ],
   "plugins": [
     "eslint",
     "import",
