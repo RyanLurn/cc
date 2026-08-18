@@ -3,6 +3,7 @@ packages:
   - apps/*
   - configs/*
   - libs/*
+  - services/*
 
 # Dependency settings
 savePrefix: ""
