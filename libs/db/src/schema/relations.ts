@@ -1,6 +1,7 @@
 import { defineRelations } from "drizzle-orm";
 
 import { accountTable } from "@/schema/tables/account";
+import { aiAgentTable } from "@/schema/tables/ai-agent";
 import { sessionTable } from "@/schema/tables/session";
 import { userTable } from "@/schema/tables/user";
 import { verificationTable } from "@/schema/tables/verification";
@@ -11,8 +12,9 @@ export const relations = defineRelations(
     sessionTable,
     accountTable,
     verificationTable,
+    aiAgentTable,
   },
-  ({ many, one, userTable, sessionTable, accountTable }) => ({
+  ({ many, one, userTable, sessionTable, accountTable, aiAgentTable }) => ({
     userTable: {
       sessions: many.sessionTable({
         from: userTable.id,
@@ -21,6 +23,13 @@ export const relations = defineRelations(
       accounts: many.accountTable({
         from: userTable.id,
         to: accountTable.userId,
+      }),
+      aiAgents: many.aiAgentTable({
+        from: userTable.id,
+        to: aiAgentTable.userId,
+        where: {
+          deletedAt: undefined,
+        },
       }),
     },
     sessionTable: {
@@ -32,6 +41,12 @@ export const relations = defineRelations(
     accountTable: {
       user: one.userTable({
         from: accountTable.userId,
+        to: userTable.id,
+      }),
+    },
+    aiAgentTable: {
+      user: one.userTable({
+        from: aiAgentTable.userId,
         to: userTable.id,
       }),
     },
