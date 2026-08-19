@@ -15,3 +15,8 @@ export const timestamps = {
     .notNull()
     .$onUpdate(() => new Date()),
 };
+
+export const timestampsWithDelete = {
+  ...timestamps,
+  deletedAt: timestamp("deleted_at", timestampConfig),
+};
