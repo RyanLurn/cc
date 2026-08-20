@@ -8,4 +8,9 @@ export default {
     await env.pocQueue.send(log);
     return new Response("Success!");
   },
+  async queue(batch): Promise<void> {
+    for (const message of batch.messages) {
+      console.log("consumed from our queue:", JSON.stringify(message.body));
+    }
+  },
 } satisfies ExportedHandler<Env>;
