@@ -1,0 +1,17 @@
+{
+  "name": "@repo/poc",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev"
+  },
+  "dependencies": {
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "wrangler": "catalog:"
+  }
+}

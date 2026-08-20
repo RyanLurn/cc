@@ -255,6 +255,25 @@ importers:
         specifier: 2.10.10
         version: 2.10.10
 
+  apps/poc:
+    dependencies:
+      zod:
+        specifier: 'catalog:'
+        version: 4.4.3
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../configs/typescript
+      '@types/node':
+        specifier: 'catalog:'
+        version: 26.2.0
+      typescript:
+        specifier: 'catalog:'
+        version: 7.0.2
+      wrangler:
+        specifier: 'catalog:'
+        version: 4.123.0
+
   apps/web:
     dependencies:
       '@base-ui/react':
