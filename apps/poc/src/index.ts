@@ -23,7 +23,9 @@ export default {
     const _appEventList = parsedMessageBodyList
       .map(({ id }) => {
         const foundEvent = database.appEventRecord[id];
-        if (foundEvent === undefined) {
+        if (foundEvent) {
+          foundEvent.status = "RECEIVED";
+        } else {
           console.warn(`Failed to find event with id: ${id}`);
         }
         return foundEvent;
