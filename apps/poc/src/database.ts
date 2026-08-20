@@ -4,6 +4,6 @@ export interface Database {
   appEventRecord: Record<EventId, AppEvent>;
 }
 
-export const database = {
+export const database: Database = {
   appEventRecord: {},
-} satisfies Database;
+};

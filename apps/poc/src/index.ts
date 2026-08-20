@@ -1,3 +1,8 @@
+import { z } from "zod";
+
+import { database } from "@/database";
+import { QueueMessageBodySchema } from "@/schemas";
+
 export default {
   async fetch(request, env): Promise<Response> {
     const log = {
@@ -9,8 +14,20 @@ export default {
     return new Response("Success!");
   },
   async queue(batch): Promise<void> {
-    for (const message of batch.messages) {
-      console.log("consumed from our queue:", JSON.stringify(message.body));
-    }
+    // Parse message bodies for event ids
+    const parsedMessageBodyList = z
+      .array(QueueMessageBodySchema)
+      .parse(batch.messages.map((message) => message.body));
+
+    // Get the referenced events
+    const _appEventList = parsedMessageBodyList
+      .map(({ id }) => {
+        const foundEvent = database.appEventRecord[id];
+        if (foundEvent === undefined) {
+          console.warn(`Failed to find event with id: ${id}`);
+        }
+        return foundEvent;
+      })
+      .filter((appEvent) => appEvent !== undefined);
   },
 } satisfies ExportedHandler<Env>;
