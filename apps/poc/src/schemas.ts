@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import {
+  APP_EVENT_DISCRIMINATOR,
   CHAT_MESSAGE_SENT_EVENT_KIND,
   CHAT_MESSAGES_READ_EVENT_KIND,
   EVENT_KIND_LIST,
@@ -19,20 +20,20 @@ export type EventStatus = z.infer<typeof EventStatusSchema>;
 
 export const BaseEventSchema = z.object({
   id: EventIdSchema,
-  kind: EventKindSchema,
+  [APP_EVENT_DISCRIMINATOR]: EventKindSchema,
   status: EventStatusSchema,
   data: z.json(),
 });
 export type BaseEvent = z.infer<typeof BaseEventSchema>;
 
 export const PassTurnEventSchema = BaseEventSchema.safeExtend({
-  kind: z.literal(PASS_TURN_EVENT_KIND),
+  [APP_EVENT_DISCRIMINATOR]: z.literal(PASS_TURN_EVENT_KIND),
   data: z.null(),
 });
 export type PassTurnEvent = z.infer<typeof PassTurnEventSchema>;
 
 export const ChatMessagesReadEventSchema = BaseEventSchema.safeExtend({
-  kind: z.literal(CHAT_MESSAGES_READ_EVENT_KIND),
+  [APP_EVENT_DISCRIMINATOR]: z.literal(CHAT_MESSAGES_READ_EVENT_KIND),
   data: z.object({
     reader: z.string(),
     readMessages: z.array(
@@ -44,7 +45,7 @@ export const ChatMessagesReadEventSchema = BaseEventSchema.safeExtend({
 export type ChatMessagesReadEvent = z.infer<typeof ChatMessagesReadEventSchema>;
 
 export const ChatMessageSentEventSchema = BaseEventSchema.safeExtend({
-  kind: z.literal(CHAT_MESSAGE_SENT_EVENT_KIND),
+  [APP_EVENT_DISCRIMINATOR]: z.literal(CHAT_MESSAGE_SENT_EVENT_KIND),
   data: z.object({
     sender: z.string(),
     content: z.string(),
@@ -53,7 +54,7 @@ export const ChatMessageSentEventSchema = BaseEventSchema.safeExtend({
 });
 export type ChatMessageSentEvent = z.infer<typeof ChatMessageSentEventSchema>;
 
-export const AppEventSchema = z.discriminatedUnion("kind", [
+export const AppEventSchema = z.discriminatedUnion(APP_EVENT_DISCRIMINATOR, [
   PassTurnEventSchema,
   ChatMessageSentEventSchema,
   ChatMessagesReadEventSchema,
