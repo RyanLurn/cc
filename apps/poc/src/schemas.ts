@@ -60,3 +60,8 @@ export const AppEventSchema = z.discriminatedUnion(APP_EVENT_DISCRIMINATOR, [
   ChatMessagesReadEventSchema,
 ]);
 export type AppEvent = z.infer<typeof AppEventSchema>;
+
+export const QueueMessageBodySchema = z.object({
+  id: EventIdSchema,
+});
+export type QueueMessageBody = z.infer<typeof QueueMessageBodySchema>;
