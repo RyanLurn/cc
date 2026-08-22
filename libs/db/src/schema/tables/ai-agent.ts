@@ -1,6 +1,7 @@
 import { isNull } from "drizzle-orm";
-import { pgTable, text, uniqueIndex } from "drizzle-orm/pg-core";
+import { pgEnum, pgTable, text, uniqueIndex, uuid } from "drizzle-orm/pg-core";
 
+import { AI_AGENT_MODE_LIST } from "@/constants/ai-agent";
 import { id } from "@/schema/helpers/id";
 import { timestampsWithDelete } from "@/schema/helpers/timestamps";
 import { userId } from "@/schema/tables/user";
@@ -20,4 +21,18 @@ export const aiAgentTable = pgTable(
       .on(table.userId, table.name)
       .where(isNull(table.deletedAt)),
   ],
+);
+export const aiAgentId = uuid("ai_agent_id").references(() => aiAgentTable.id);
+
+export const aiAgentModeSwitchingInstanceTableName =
+  "ai_agent_mode_switching_instances";
+export const aiAgentModeSwitchingInstanceTable = pgTable(
+  aiAgentModeSwitchingInstanceTableName,
+  {
+    id,
+    userId,
+    aiAgentId,
+    toMode: pgEnum("to_mode", AI_AGENT_MODE_LIST)().notNull(),
+    ...timestampsWithDelete,
+  },
 );
